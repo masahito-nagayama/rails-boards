@@ -23,6 +23,7 @@ class BoardsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new(board_id: @board.id)
   end
 
   def edit 
@@ -34,7 +35,7 @@ class BoardsController < ApplicationController
   end
 
   def destroy
-    @board.delete
+    @board.destroy
     redirect_to boards_path, flash: { notice: "「#{@board.title}」の掲示板が削除されました" }
   end
 
